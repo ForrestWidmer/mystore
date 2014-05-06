@@ -8,4 +8,6 @@ class Product < ActiveRecord::Base
     with: %r{\.(gif|jpg|png|jpeg)$}i,
     message: "Must be a URL for a GIF, JPG, JPEG, or PNG." 
   }
+
+  default_scope order: 'title'
 end

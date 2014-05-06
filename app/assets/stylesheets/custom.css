@@ -1,7 +1,25 @@
+body {
+  margin:2em 2em 2em 2em;
+}
+
 .list_item_odd {
   background-color: #a6a6a6;
 }
 
 tr {
   border: 1px solid #8a8a8a;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  text-decoration: none;
+  background-color: #428bca;
+}
+
+.nav > li > a, .nav > li > a:focus {
+  background-color: #9EDBF5;
+}
+
+#side-nav {
+  border: 1px solid #05222E;
+  border-radius: 4px
 }
