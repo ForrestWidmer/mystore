@@ -10,4 +10,11 @@ private
     session[:cart_id] = cart.id 
     cart    
   end
+
+  def session_counter
+    if session[:counter].nil?
+      session[:counter] = 0
+    end
+    session[:counter] += 1
+  end
 end
