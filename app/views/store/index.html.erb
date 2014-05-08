@@ -1,0 +1,27 @@
+<!-- <div class="container"> -->
+  <div class="row">
+
+    <div class="col-md-12">
+      <h1 class="text-center">Product Listing</h1>
+      <br>
+    </div>
+  </div>
+
+  <% @products.in_groups_of(3, false).each do |group| %>
+    <div class="row" id="products-row">
+      <div class="col-md-12" id="products">
+        <% group.each do |product| %>
+          <div class="col-md-4 col-sm-4 entry text-center">
+            <%= image_tag(product.image_url) %>
+            <h3><%= product.title %></h3>
+            <%= truncate (strip_tags(sanitize product.description)), length: 100, seperator: " " %>
+            <div class="price_line">
+              <span class="price btn btn-primary btn-xs active"><%= number_to_currency(product.price) %></span>
+              <%= button_to "Add to Cart", line_items_path(:product_id => product), class: 'btn btn-primary btn-xs', id: 'add_product_button' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<!-- </div> -->
