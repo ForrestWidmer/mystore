@@ -21,5 +21,30 @@ tr {
 
 #side-nav {
   border: 1px solid #05222E;
-  border-radius: 4px
+  border-radius: 4px;
+  padding: 1px 1px 1px 1px;
+  box-shadow: 3px 1px 2px #888888;
 }
+
+#add_product_button {
+  background-color: #3276b1;
+}
+
+#add_product_button:hover {
+  color: #ffffff;
+  background-color: #9EDBF5;
+  border-color: #285e8e;
+}
+
+#products .entry form, #products form div {
+  display: inline;
+}
+
+.price {
+  cursor: default;
+}
+
+/*.entry {
+  border: 1px solid blue;
+  border-radius: 4px;
+}*/
