@@ -10,7 +10,7 @@
   <ul>
     <% @cart.line_items.each do |item| %>
     <li>
-      <%= item.product.title %> &times; <%= item.quantity %> <%= number_to_currency(item.product.price) %>
+      <%= item.product.title %> &times; <%= item.quantity %> <%= number_to_currency(item.price) %> <%= button_to "Remove Item?", item, method: :delete, confirm: "You sure?" %>
     </li>
     <% end %>
   </ul>
