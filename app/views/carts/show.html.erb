@@ -10,7 +10,7 @@
   <ul>
     <% @cart.line_items.each do |item| %>
     <li>
-      <%= item.product.title %>
+      <%= item.product.title %> &times; <%= item.quantity %> <%= number_to_currency(item.product.price) %>
     </li>
     <% end %>
   </ul>
@@ -20,3 +20,5 @@
 
 <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %>
+<%= button_to "Empty Cart", @cart, method: :delete, confirm: "Are you sure?" %>
+<h1>Add total price table</h1>
