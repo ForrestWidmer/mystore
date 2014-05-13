@@ -1,1 +1,5 @@
-$("#<%= dom_id(@line_item) %>").fadeOut();
+<% if @line_item.quantity >= 1 %>
+  $("#side-cart").html("<%= escape_javascript(render(@cart)) %>");
+<% else %>
+  $("#<%= dom_id(@line_item) %>").fadeOut();
+<% end %>
