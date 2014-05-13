@@ -44,6 +44,14 @@ tr {
   cursor: default;
 }
 
+#side-cart h3 {
+  border-bottom: 1px solid #05222E;
+}
+
+#side-cart {
+  
+}
+
 /*.entry {
   border: 1px solid blue;
   border-radius: 4px;

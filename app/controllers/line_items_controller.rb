@@ -46,7 +46,8 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to (@line_item.cart), notice: 'Line item was successfully created.' }
+        format.js { @current_item = @line_item }
+        format.html { redirect_to store_url, notice: 'Line item was successfully created.' }
         format.json { render json: @line_item, status: :created, location: @line_item }
       else
         format.html { render action: "new" }
@@ -79,7 +80,8 @@ class LineItemsController < ApplicationController
     @line_item.remove_product(@line_item)
 
     respond_to do |format|
-      format.html { redirect_to @cart }
+      format.js
+      format.html { redirect_to store_url }
       format.json { head :no_content }
     end
   end

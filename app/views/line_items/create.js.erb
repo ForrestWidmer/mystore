@@ -1,0 +1,5 @@
+$("#side-cart").html("<%= escape_javascript(render(@cart)) %>");
+
+$("#current_item").effect('highlight', {color: '#428bca'}, 3000);
+
+$("#side-cart").slideDown();
