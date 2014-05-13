@@ -18,4 +18,8 @@
 
 $(document).ready(function() {
     $('.entry img').tooltip();
+
+    $("body").click(function(){
+      $(".alert").fadeOut(); // So the alert bar after submitting an order will fade if user continues to shop.
+    });
 });

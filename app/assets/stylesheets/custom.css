@@ -2,6 +2,11 @@ body {
   margin:2em 2em 2em 2em;
 }
 
+.col-center {
+  float: none;
+  margin: 0 auto;
+}
+
 .list_item_odd {
   background-color: #a6a6a6;
 }
@@ -48,8 +53,12 @@ tr {
   border-bottom: 1px solid #05222E;
 }
 
-#side-cart {
-  
+#products-row {
+  margin: 0 0 1em 0;
+}
+
+a:visited {
+  color: #ffffff !important;
 }
 
 /*.entry {
