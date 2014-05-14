@@ -1,7 +1,9 @@
 class Product < ActiveRecord::Base
   attr_accessible :description, :image_url, :price, :title
 
-  default_scope order: 'title'
+  default_scope {where(owner_id: Owner.current_id)}
+
+  scope :order, order('title')
 
   has_many :line_items
   has_many :orders, through: :line_items
