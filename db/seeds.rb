@@ -5,7 +5,21 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+#Owners--------------------------------
+
+Owner.delete_all
+
+Owner.create(:name => "Dog Store", 
+  :subdomain => "dogstore")
+
+Owner.create(:name => "Cat Store", 
+  :subdomain => "catstore")
+
+#Products--------------------------------
+
 Product.delete_all
+
 Product.create(:title => 'Web Design for Developers',
   :description => 
     %{<p>
@@ -82,5 +96,6 @@ Product.create(:title => 'Rails Test Others',
   :image_url => 'wordpress.jpg',
   :price => 43.75)
 
+puts "#{Owner.count} Owners created"
 puts "#{Product.count} Products created."
 
