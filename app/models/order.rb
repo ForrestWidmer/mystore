@@ -1,6 +1,8 @@
 class Order < ActiveRecord::Base
   attr_accessible :address, :email, :name, :pay_type
 
+  default_scope { where(owner_id: Owner.current_id) }
+
   has_many :line_items, dependent: :destroy
 
   PAYMENT_METHODS = ["Credit Card", "Check",  "Cash"]

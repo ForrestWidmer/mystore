@@ -1,6 +1,8 @@
 class LineItem < ActiveRecord::Base
   attr_accessible :cart_id, :product_id, :product, :quantity
 
+  default_scope { where(owner_id: Owner.current_id) }
+
   belongs_to :order
   belongs_to :product 
   belongs_to :cart

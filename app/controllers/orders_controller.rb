@@ -13,11 +13,17 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @order = Order.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @order }
+    begin
+      @order = Order.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error "Attempted access to invalid order_id"
+      flash[:error] = "Invalid order. Please view a valid order."
+      redirect_to store_url
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @order }
+      end
     end
   end
 

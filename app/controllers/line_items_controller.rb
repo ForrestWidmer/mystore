@@ -13,11 +13,17 @@ class LineItemsController < ApplicationController
   # GET /line_items/1
   # GET /line_items/1.json
   def show
-    @line_item = LineItem.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @line_item }
+    begin
+      @line_item = LineItem.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error "Attempted access to invalid line_item_id"
+      flash[:error] = "Not a valid line_item. Please view a valid line_item"
+      redirect_to store_url
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @line_item }
+      end
     end
   end
 

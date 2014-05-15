@@ -15,7 +15,7 @@ private
   rescue ActiveRecord::RecordNotFound
     cart = Cart.create
     session[:cart_id] = cart.id 
-    cart    
+    cart
   end
 
   def session_counter

@@ -10,7 +10,7 @@
       <%= line_item.product.title %> <br>
       &times; <%= line_item.quantity %> 
       <%= number_to_currency(line_item.price) %> 
-      <%= button_to "Remove Item?", line_item, method: :delete, class: "btn btn-primary btn-xs", remote: true %>
+      <%= button_to "Remove Item", line_item, method: :delete, class: "btn btn-primary btn-xs", remote: true %>
     </li>
   </ul>
   </div>
