@@ -1,6 +1,6 @@
-class CreateOwners < ActiveRecord::Migration
+class CreateStores < ActiveRecord::Migration
   def change
-    create_table :owners do |t|
+    create_table :stores do |t|
       t.string :name
       t.string :subdomain
 

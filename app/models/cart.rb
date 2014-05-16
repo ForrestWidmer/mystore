@@ -2,7 +2,7 @@ class Cart < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :line_items, dependent: :destroy
 
-  default_scope { where(owner_id: Owner.current_id) }
+  default_scope { where(store_id: Store.current_id) }
 
   def add_product(product_id)
     current_item = line_items.where(:product_id => product_id).first

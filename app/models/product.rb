@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
   attr_accessible :description, :image_url, :price, :title
 
-  default_scope { where(owner_id: Owner.current_id) }
+  default_scope { where(store_id: Store.current_id) }
 
   scope :order, order('title')
 
@@ -13,7 +13,7 @@ class Product < ActiveRecord::Base
   
   validates :description, :image_url, :title, presence: true
   validates :price, :numericality => {:greater_than_or_equal_to => 0.01}
-  validates :title, uniqueness: { scope: :owner_id }
+  validates :title, uniqueness: { scope: :store_id }
   validates :image_url, format: {
     with: %r{\.(gif|jpg|png|jpeg)$}i,
     message: "Must be a URL for a GIF, JPG, JPEG, or PNG." 

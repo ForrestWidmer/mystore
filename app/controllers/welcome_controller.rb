@@ -1,12 +1,12 @@
 class WelcomeController < ApplicationController
 
-  skip_around_filter :scope_current_owner
+  skip_around_filter :scope_current_store
 
   def home
   end
 
   def index
-    @owners = Owner.all
+    @stores = Store.all
   end
 
   def about

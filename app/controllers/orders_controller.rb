@@ -58,7 +58,7 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        format.html { redirect_to store_url, flash: {success: 'Order was successfully created.'} }
+        format.html { redirect_to root_url, flash: {success: 'Order was successfully created.'} }
         format.json { render json: @order, status: :created, location: @order }
       else
         format.html { render action: "new" }

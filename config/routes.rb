@@ -8,19 +8,16 @@ Mystore::Application.routes.draw do
 
   resources :orders
 
-
   resources :line_items
-
-  resources :owners
-
 
   resources :carts
 
+  resources :stores
 
   resources :products do
     get :who_bought, on: :member
   end 
   
-  match '', to: 'store#index', constraints: {subdomain: /.+/}
+  match '', to: 'stores#index', constraints: {subdomain: /.+/}
   root to: 'welcome#index'
 end

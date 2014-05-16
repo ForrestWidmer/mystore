@@ -6,8 +6,8 @@
 
 <div class="row">
   <div class="col-md-6 col-center">
-    <% @owners.each do |owner| %>
-      <h3 class="text-center"><%= link_to owner.name, root_url(subdomain: owner.subdomain) %></h3>
+    <% @stores.each do |store| %>
+      <h3 class="text-center"><%= link_to store.name, root_url(subdomain: store.subdomain) %></h3>
    <% end %>
   </div>
 </div>

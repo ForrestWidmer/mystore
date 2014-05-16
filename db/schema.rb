@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(:version => 20140514233142) do
   create_table "carts", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "owner_id"
+    t.integer  "store_id"
   end
 
-  add_index "carts", ["owner_id"], :name => "index_carts_on_owner_id"
+  add_index "carts", ["store_id"], :name => "index_carts_on_store_id"
 
   create_table "line_items", :force => true do |t|
     t.integer  "product_id"
@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(:version => 20140514233142) do
     t.datetime "updated_at",                :null => false
     t.integer  "quantity",   :default => 1
     t.integer  "order_id"
-    t.integer  "owner_id"
+    t.integer  "store_id"
   end
 
-  add_index "line_items", ["owner_id"], :name => "index_line_items_on_owner_id"
+  add_index "line_items", ["store_id"], :name => "index_line_items_on_store_id"
 
   create_table "orders", :force => true do |t|
     t.string   "name"
@@ -40,17 +40,10 @@ ActiveRecord::Schema.define(:version => 20140514233142) do
     t.string   "pay_type"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "owner_id"
+    t.integer  "store_id"
   end
 
-  add_index "orders", ["owner_id"], :name => "index_orders_on_owner_id"
-
-  create_table "owners", :force => true do |t|
-    t.string   "name"
-    t.string   "subdomain"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+  add_index "orders", ["store_id"], :name => "index_orders_on_store_id"
 
   create_table "products", :force => true do |t|
     t.string   "title"
@@ -59,9 +52,16 @@ ActiveRecord::Schema.define(:version => 20140514233142) do
     t.decimal  "price",       :precision => 8, :scale => 2
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
-    t.integer  "owner_id"
+    t.integer  "store_id"
   end
 
-  add_index "products", ["owner_id"], :name => "index_products_on_owner_id"
+  add_index "products", ["store_id"], :name => "index_products_on_store_id"
+
+  create_table "stores", :force => true do |t|
+    t.string   "name"
+    t.string   "subdomain"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

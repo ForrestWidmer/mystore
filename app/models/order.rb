@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   attr_accessible :address, :email, :name, :pay_type
 
-  default_scope { where(owner_id: Owner.current_id) }
+  default_scope { where(store_id: Store.current_id) }
 
   has_many :line_items, dependent: :destroy
 

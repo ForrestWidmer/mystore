@@ -1,14 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  around_filter :scope_current_owner
+  around_filter :scope_current_store
 
 private
 
-  def current_owner
-    Owner.find_by_subdomain! request.subdomain
+  def current_store
+    Store.find_by_subdomain! request.subdomain
   end
-  helper_method :current_owner
+  helper_method :current_store
 
   def current_cart
     Cart.find(session[:cart_id])
@@ -25,10 +25,10 @@ private
     session[:counter] += 1
   end
 
-  def scope_current_owner
-    Owner.current_id = current_owner.id
+  def scope_current_store
+    Store.current_id = current_store.id
     yield
   ensure
-    Owner.current_id = nil
+    Store.current_id = nil
   end
 end
