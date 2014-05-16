@@ -11,6 +11,20 @@ end
 
 module Mystore
   class Application < Rails::Application
+
+    config.assets.initialize_on_precompile = false
+
+   
+    config.to_prepare do
+        [   Devise::SessionsController, 
+            Devise::RegistrationsController, 
+            Devise::PasswordsController, 
+            Devise::ConfirmationsController
+        ].each do |controller|
+            controller.skip_around_filter :scope_current_store
+        end
+    end
+    #end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

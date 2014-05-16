@@ -23,12 +23,24 @@
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <%= flash[:alert] %>
   </div>
+<% elsif flash[:notice] %>
+  <div class="alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <%= flash[:notice] %>
+  </div>
 <% end %>
 
 <!-- <div class="container"> -->
   <div class="row">
     <div class="col-md-2 col-sm-2 text-center" id="side-nav">
       <ul class="nav nav-pills nav-stacked">
+      <% if current_user %>
+        <li class="no-point btn btn-primary"><small>Hello <%= current_user.email %>!</small></li>
+        <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Sign In", new_user_session_path %></li>
+        <li><%= link_to "Sign Up", new_user_registration_path %></li>
+      <% end %>
         <li><%= link_to "Site Home", root_url(subdomain: false) %></li>
         <li><%= link_to "Store Home", root_path %></li>
         <li><%= link_to "Create Store", new_store_path %></li>

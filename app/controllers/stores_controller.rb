@@ -40,7 +40,7 @@ class StoresController < ApplicationController
 
     respond_to do |format|
       if @store.save
-        format.html { redirect_to root_url(subdomain: @store.subdomain), flash: {success: 'Store was successfully created.'} }
+        format.html { redirect_to root_url(subdomain: @store.subdomain), notice: 'Store was successfully created.' }
         format.json { render json: @store, status: :created, location: @store }
       else
         format.html { render action: "new" }
