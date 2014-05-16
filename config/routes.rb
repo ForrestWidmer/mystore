@@ -1,5 +1,11 @@
 Mystore::Application.routes.draw do
 
+  get "welcome/home"
+
+  get "welcome/index"
+
+  get "welcome/about"
+
   resources :orders
 
 
@@ -13,5 +19,6 @@ Mystore::Application.routes.draw do
     get :who_bought, on: :member
   end 
   
-  root to: 'store#index', as: 'store'
+  match '', to: 'store#index', constraints: {subdomain: /.+/}
+  root to: 'welcome#index'
 end
