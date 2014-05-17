@@ -2,19 +2,11 @@ Mystore::Application.routes.draw do
 
   devise_for :users
 
-  get "welcome/home"
+  get "/home" => "welcome#home", as: "home"
 
-  get "welcome/index"
+  get "/about" => "welcome#about", as: "about"
 
-  get "welcome/about"
-
-  resources :orders
-
-  resources :line_items
-
-  resources :carts
-
-  resources :stores
+  resources :orders, :line_items, :carts, :stores
 
   resources :products do
     get :who_bought, on: :member
