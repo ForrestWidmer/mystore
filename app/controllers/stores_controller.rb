@@ -21,7 +21,7 @@ class StoresController < ApplicationController
   end
 
   def create
-    @store = Store.new(params[:store])
+    @store = current_user.stores.build(params[:store])
 
     if @store.save
       redirect_to root_url(subdomain: @store.subdomain), notice: 'Store was successfully created.'

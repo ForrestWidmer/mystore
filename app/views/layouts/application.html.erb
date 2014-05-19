@@ -45,6 +45,7 @@
         <li><%= link_to "Store Home", root_path %></li>
         <li><%= link_to "Create Store", new_store_path %></li>
         <li><%= link_to "Admin", products_path %></li>
+        <li><%= link_to "Account Overview", home_url(subdomain: false) %></li>
       </ul>
       <% if @cart %>
       <%= hidden_div_if(@cart.line_items.empty?, id: "side-cart") do %>

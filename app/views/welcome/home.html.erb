@@ -1,2 +1,20 @@
-<h1>Welcome#home</h1>
-<p>Find me in app/views/welcome/home.html.erb</p>
+<div class="row">
+  <div class="col-md-12 text-center"> 
+  <h1>Hello <%= current_user.name || current_user.email %></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 text-center"> 
+    <h1>Your active stores</h1>
+    <% @stores.each do |store| %>
+      <h1><%= link_to store.name, root_url(subdomain: store.subdomain) %></h1>
+    <% end %>
+  </div>
+
+  <div class="col-md-6 text-center">
+    <h1>What would you like to do?</h1>
+    <%= link_to "Create a new store", "#", class: "btn btn-primary" %><br><br>
+    <%= link_to "Upgrade Account", "#", class: "btn btn-primary" %>
+  </div>
+</div>
