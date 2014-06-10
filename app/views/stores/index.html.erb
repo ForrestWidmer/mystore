@@ -3,6 +3,8 @@
 
     <div class="col-md-12 text-center">
       <h1><%= current_store.name %></h1>
+      <p><%= link_to "Manage Products", store_products_path(current_store) %></p>
+      <p><%= link_to "Add Product", new_store_product_path(current_store) %></p>
       <!-- <#p>You've visited this page <#%= @counter %> times!</p> -->
       <br>
     </div>
@@ -13,7 +15,7 @@
       <div class="col-md-12" id="products">
         <% group.each do |product| %>
           <div class="col-md-4 col-sm-4 entry text-center">
-            <%= link_to image_tag(product.image_url, title: "Click for product details!"), product %>
+            <%= link_to image_tag(product.image_url, title: "Click for product details!"), [product.store, product] %>
             <h3><%= product.title %></h3>
             <%= truncate (strip_tags(sanitize product.description)), length: 100, seperator: " " %>
             <div class="price_line">

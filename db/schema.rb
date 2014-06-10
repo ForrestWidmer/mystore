@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140516045105) do
+ActiveRecord::Schema.define(:version => 20140519062530) do
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -62,7 +62,10 @@ ActiveRecord::Schema.define(:version => 20140516045105) do
     t.string   "subdomain"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
+
+  add_index "stores", ["user_id"], :name => "index_stores_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

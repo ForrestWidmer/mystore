@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  around_filter :scope_current_store
+  #around_filter :scope_current_store
 
 protected
 
@@ -31,10 +31,17 @@ private
     session[:counter] += 1
   end
 
-  def scope_current_store
-    Store.current_id = current_store.id
-    yield
-  ensure
-    Store.current_id = nil
+  def authorize
+    unless current_user && current_user.id == current_store.user.id 
+      flash[:error] = "Not authorized."
+      redirect_to root_path
+    end
   end
+
+  # def scope_current_store
+  #   Store.current_id = current_store.id
+  #   yield
+  # ensure
+  #   Store.current_id = nil
+  # end
 end

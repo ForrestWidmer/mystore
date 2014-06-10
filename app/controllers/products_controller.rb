@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_filter :get_store
+  before_filter :authorize, only: :new #Will add better authorization later.
  
   def who_bought
     @product = Product.find(params[:id])
@@ -9,7 +11,7 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all
+    @products = current_store.products
   end
  
   def show
@@ -30,10 +32,10 @@ class ProductsController < ApplicationController
   end
  
   def create
-    @product = Product.new(params[:product])
+    @product = @store.products.build(params[:product])
 
     if @product.save
-      redirect_to @product, notice: 'Product was successfully created.'
+      redirect_to root_path, notice: 'Product was successfully created.'
     else
       render action: "new"
     end
@@ -43,7 +45,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     if @product.update_attributes(params[:product])
-      redirect_to @product, notice: 'Product was successfully updated.'
+      redirect_to [@store, @product], notice: 'Product was successfully updated.'
     else
       render action: "edit"
     end
@@ -53,6 +55,10 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.destroy
 
-    redirect_to products_url
+    redirect_to :back
+  end
+
+  def get_store
+    @store = current_store
   end
 end
