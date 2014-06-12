@@ -6,12 +6,13 @@ Mystore::Application.routes.draw do
 
   get "/about" => "welcome#about", as: "about"
 
-  resources :orders, :line_items, :carts
+  resources :line_items, :carts
 
   resources :stores do
     resources :products do
       get :who_bought, on: :member
-    end 
+    end
+    resources :orders 
   end
   
   match '', to: 'stores#index', constraints: {subdomain: /.+/}

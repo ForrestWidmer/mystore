@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
+  before_filter :get_store
   
   
   def index
-    @orders = Order.all
+    @orders = @store.orders
   end
 
   def show
@@ -30,7 +31,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(params[:order])
+    @order = @store.orders.build(params[:order])
     @order.add_line_items_from_cart(current_cart)
 
     if @order.save
@@ -46,7 +47,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
 
     if @order.update_attributes(params[:order])
-      redirect_to @order, notice: 'Order was successfully updated.'
+      redirect_to [@store, @order], notice: 'Order was successfully updated.'
     else
       render action: "edit"
     end

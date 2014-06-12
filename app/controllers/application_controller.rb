@@ -9,6 +9,10 @@ protected
     home_path
   end
 
+  def get_store
+    @store = current_store
+  end
+
 private
 
   def current_store

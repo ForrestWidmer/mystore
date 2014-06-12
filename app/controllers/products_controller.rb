@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = current_store.products
+    @products = @store.products
   end
  
   def show
@@ -56,9 +56,5 @@ class ProductsController < ApplicationController
     @product.destroy
 
     redirect_to :back
-  end
-
-  def get_store
-    @store = current_store
   end
 end

@@ -3,6 +3,7 @@ class Store < ActiveRecord::Base
   cattr_accessor :current_id # cattr_accessor creates a class level accessor
 
   has_many :products, dependent: :destroy
+  has_many :orders, dependent: :destroy
   
 
   belongs_to :user

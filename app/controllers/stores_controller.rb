@@ -1,9 +1,9 @@
 class StoresController < ApplicationController
-
+  before_filter :get_store
   skip_around_filter :scope_current_store, only: [:new, :create] #Will remove this later.
   
   def index
-    @products = Product.all
+    @products = @store.products
     @cart = current_cart
     @stores = Store.all
   end
